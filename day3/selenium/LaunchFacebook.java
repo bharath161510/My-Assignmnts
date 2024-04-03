@@ -44,6 +44,9 @@ public class LaunchFacebook {
 		//get page source
 		//System.out.println("The page source is: "+driver.getPageSource());
 		
+		//get attribute
+		//driver.findElement(By.id("email")).getAttribute(null)
+		
 		
 		
 	}

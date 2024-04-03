@@ -1,9 +1,12 @@
-package week2.day3.selenium;
+package week2.day4;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
-public class LoginLeaftapsApplication {
+
+public class LearnDropDown {
 
 	public static void main(String[] args) {
 
@@ -24,9 +27,9 @@ public class LoginLeaftapsApplication {
 		//Enter the password as crmsfa
 		driver.findElement(By.name("PASSWORD")).sendKeys("crmsfa");
 		
-		//click on Login  button
+		//click on Login  button'
 		driver.findElement(By.className("decorativeSubmit")).click();
-				
+		
 		//print text
 		String text = driver.findElement(By.tagName("h2")).getText();
 		System.out.println(text);
@@ -49,10 +52,32 @@ public class LoginLeaftapsApplication {
 		//Enter Last name
 		driver.findElement(By.id("createLeadForm_lastName")).sendKeys("Chandragiri");
 		
-		//Click on create Lead
-		driver.findElement(By.name("submitButton")).click();
+		//select method by value
+		WebElement ele  = driver.findElement(By.id("createLeadForm_dataSourceId"));
+		Select sc=new Select(ele);
+		sc.selectByValue("LEAD_CONFERENCE");
 		
+		//select method by index
+		WebElement ele1 = driver.findElement(By.id("createLeadForm_marketingCampaignId"));
+		Select sc1=new Select(ele1);
+		sc1.selectByIndex(2);
 	
+		//select method by VisibleText
+		WebElement ele2=driver.findElement(By.id("createLeadForm_industryEnumId"));
+		Select sc2=new Select(ele2);
+		sc2.selectByVisibleText("Computer Software");
+		
+		//Get the title of the current web page.
+			System.out.println("The title is: " + driver.getTitle());	
+				
+		//verify title
+				if (driver.getTitle().contains("Create Lead | opentaps CRM")) {
+					System.out.println("The title is correct");
+				}
+				else 
+					System.out.println("The title is incorrect");
+				
+
 		
 	}
 
